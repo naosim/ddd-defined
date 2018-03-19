@@ -1,0 +1,4 @@
+rootProject.name = 'defined'
+include 'common'
+include 'vavr'
+
