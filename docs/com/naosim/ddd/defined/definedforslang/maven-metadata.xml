@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.naosim.ddd.defined</groupId>
-  <artifactId>common</artifactId>
+  <artifactId>definedforslang</artifactId>
   <versioning>
     <release>0.1.0</release>
     <versions>
