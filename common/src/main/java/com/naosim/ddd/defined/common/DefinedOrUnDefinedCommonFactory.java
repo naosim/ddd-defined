@@ -3,14 +3,14 @@ package com.naosim.ddd.defined.common;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-public class DefinedOrUnDefinedFactory<U, D, R> {
+public class DefinedOrUnDefinedCommonFactory<U, D, R> {
     private final Function<String, U> undefinedFactory;
     private final D[] definedArray;
     private final Function<D, String> eqValue;
     private final Function<U, R> callbackForUndefined;
     private final Function<D, R> callbackForDefined;
 
-    public DefinedOrUnDefinedFactory(
+    public DefinedOrUnDefinedCommonFactory(
             Function<String, U> undefinedFactory,
             D[] definedArray,
             Function<D, String> eqValue,

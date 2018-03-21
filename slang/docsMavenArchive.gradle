@@ -41,7 +41,7 @@ boolean isIncludeJar(obj) {
     return result
 }
 
-// fatJarを作成するタスク
+// 例: fatJarを作成するタスク
 task fatJar(type: Jar) {
     baseName = project.name + '-all'
     from {
