@@ -14,7 +14,7 @@ repositories {
 
 
 dependencies {
-    compile group:'com.naosim.ddd.defined', name:'common', version:'0.1.2'
+    compile group:'com.naosim.ddd.defined', name:'common', version:'0.1.3'
     // https://mvnrepository.com/artifact/io.javaslang/javaslang
     compile group: 'io.javaslang', name: 'javaslang', version: '2.0.6'
 
@@ -31,4 +31,14 @@ project.ext {
             includeJars: ['common']
     ]
 }
-apply from: 'docsMavenArchive.gradle'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file://${rootDir}/docs"
+            pom.version = project.docsMavenConfig.version
+            pom.groupId = project.docsMavenConfig.groupId
+            pom.artifactId = project.docsMavenConfig.artifactId
+        }
+    }
+}
