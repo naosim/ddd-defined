@@ -1,0 +1,67 @@
+/**
+ * GithubPagesにmaven形式で公開する
+ *
+ * 設定方法
+ * 1. build.gradle
+ * 下記のように拡張プロパティを設定してから読み込んでください
+ * project.ext {
+ *   docsMavenConfig = [
+ *     version: '0.1.0',
+ *     groupId: 'com.naosim.ddd.defined',
+ *     artifactId: 'definedforvavr',
+ *     includeJars: ['common']
+ *   ]
+ * }
+ * apply from: 'docsMavenArchive.gradle'
+ *
+ * 2. 生成
+ * ./gradlew  uploadArchives
+ *
+ * 3. Pages公開
+ * /docsをGithubPagesとして公開してください
+ */
+
+apply plugin: 'maven'
+
+// デフォルトのjarをアーティファクトから削除
+configurations.archives.artifacts.with { archives ->
+    def jarArtifact
+    archives.each {
+        if (it.file =~ 'jar') {
+            jarArtifact = it
+        }
+    }
+    println "JAR to delete: ${jarArtifact}"
+    remove(jarArtifact)
+}
+
+boolean isIncludeJar(obj) {
+    def result = project.docsMavenConfig.includeJars.findAll { obj.toString().contains(it)}.size() > 0
+    println("isIncludeJar: ${obj.toString()} -> ${result}")
+    return result
+}
+
+// fatJarを作成するタスク
+task fatJar(type: Jar) {
+    baseName = project.name + '-all'
+    from {
+        configurations.compile.findAll { isIncludeJar(it) }.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    //with jar
+}
+
+// fatJarをアーティファクトに登録
+artifacts {
+    archives fatJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file://${rootDir}/docs"
+            pom.version = project.docsMavenConfig.version
+            pom.groupId = project.docsMavenConfig.groupId
+            pom.artifactId = project.docsMavenConfig.artifactId
+        }
+    }
+}
