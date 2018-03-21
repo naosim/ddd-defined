@@ -40,7 +40,9 @@ dependencies {
 public class Main {
     static final DefinedOrUnDefinedFactory<PanUndefined, PanDefined> factory
             = new DefinedOrUnDefinedFactory<>(
-                    PanUndefined::new, PanDefined.values(), PanDefined::name
+                    PanUndefined::new,   // undefinedのファクトリ
+                    PanDefined.values(), // definedオブジェクトの配列(Enum.values())
+                    PanDefined::name     // definedかどうかを判定する際に使う値のゲッター
             );
 
     public static void main(String... args) {
