@@ -2,7 +2,7 @@
 def-undefパターン用ライブラリ
 
 ## 機能
-def-undefパターンを作る際に必要なEitherを生成する
+def-undefパターンを作る際に必要なEitherを生成する
 Eitherはvavrとjavaslangで生成できる
 
 ## 使い方
