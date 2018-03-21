@@ -3,10 +3,11 @@
   <groupId>com.naosim.ddd.defined</groupId>
   <artifactId>definedforslang</artifactId>
   <versioning>
-    <release>0.1.2</release>
+    <release>0.1.3</release>
     <versions>
       <version>0.1.2</version>
+      <version>0.1.3</version>
     </versions>
-    <lastUpdated>20180321043859</lastUpdated>
+    <lastUpdated>20180321085114</lastUpdated>
   </versioning>
 </metadata>
