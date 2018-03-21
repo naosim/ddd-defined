@@ -24,7 +24,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${rootDir}/docs"
-            pom.version = '0.1.1'
+            pom.version = '0.1.2'
             pom.groupId = 'com.naosim.ddd.defined'
             pom.artifactId = 'common'
         }

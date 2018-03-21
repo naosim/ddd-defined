@@ -47,7 +47,7 @@ task fatJar(type: Jar) {
     from {
         configurations.compile.findAll { isIncludeJar(it) }.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    //with jar
+    with jar
 }
 
 // fatJarをアーティファクトに登録
